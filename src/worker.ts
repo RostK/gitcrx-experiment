@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(async () => {
     contexts: ["link"],
     title: "GitHub repo overview",
     type: "normal",
-    targetUrlPatterns: ["https://*.github.com/*"],
+    targetUrlPatterns: ["https://github.com/*/*"],
   });
 });
 chrome.contextMenus.onClicked.addListener((info, tab) => {
