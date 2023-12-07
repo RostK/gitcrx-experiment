@@ -9,10 +9,8 @@ chrome.runtime.onInstalled.addListener(async () => {
 });
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "GET_GITHUB_INFO" && tab && info.linkUrl) {
-    void chrome.sidePanel.open({ tabId: tab?.id, windowId: tab?.windowId });
+    void chrome.sidePanel.open({ windowId: tab.windowId });
     void chrome.sidePanel.setOptions({
-      tabId: tab?.id,
-      enabled: true,
       path: `?url=${encodeURIComponent(info.linkUrl)}`,
     });
   }
