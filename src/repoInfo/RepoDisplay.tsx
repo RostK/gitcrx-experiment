@@ -1,16 +1,17 @@
 import { FC } from "react";
 import { RepoData } from "./types.ts";
+import { Link } from "./Link.tsx";
 
 export const RepoDisplay: FC<{ repoData: RepoData }> = ({ repoData }) => {
   return (
     <>
-      <h2>{repoData.name}</h2>
-      <p>
-        <details>
-          <summary>{repoData.full_name}</summary>
-          {repoData.description}
-        </details>
-      </p>
+      <h2>
+        <Link to={repoData.html_url}>{repoData.name}</Link>
+      </h2>
+      <details>
+        <summary>{repoData.full_name}</summary>
+        <p>{repoData.description}</p>
+      </details>
       <dl>
         <dt>Stars:</dt>
         <dd>{repoData.stargazers_count}</dd>
@@ -26,8 +27,10 @@ export const RepoDisplay: FC<{ repoData: RepoData }> = ({ repoData }) => {
       <dl>
         <dt>Owner:</dt>
         <dd>
-          <img src={repoData.owner.avatar_url} width={24} alt="" />{" "}
-          {repoData.owner.login}
+          <Link to={repoData.owner.html_url}>
+            <img src={repoData.owner.avatar_url} width={24} alt="" />{" "}
+            {repoData.owner.login}
+          </Link>
         </dd>
       </dl>
       <dl>
@@ -40,7 +43,13 @@ export const RepoDisplay: FC<{ repoData: RepoData }> = ({ repoData }) => {
       </dl>
       <dl>
         <dt>Topics:</dt>
-        <dd>{repoData.topics.join(", ")}</dd>
+        <dd>
+          {repoData.topics.map((topic) => (
+            <>
+              <Link to={`https://github.com/topics/${topic}`}>{topic}</Link>{" "}
+            </>
+          ))}
+        </dd>
       </dl>
     </>
   );
