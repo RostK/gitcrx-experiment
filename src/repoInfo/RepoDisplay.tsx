@@ -8,6 +8,7 @@ export const RepoDisplay: FC<{ repoData: RepoData }> = ({ repoData }) => {
       <h2>
         <Link to={repoData.html_url}>{repoData.name}</Link>
       </h2>
+      <hr />
       <details>
         <summary>{repoData.full_name}</summary>
         <p>{repoData.description}</p>
