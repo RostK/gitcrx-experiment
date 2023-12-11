@@ -47,7 +47,8 @@ export const RepoDisplay: FC<{ repoData: RepoData }> = ({ repoData }) => {
         <dd>
           {repoData.topics.map((topic) => (
             <>
-              <Link to={`https://github.com/topics/${topic}`}>{topic}</Link>{" "}
+              <Link to={`https://github.com/topics/${topic}`}>{topic}</Link>
+              {", "}
             </>
           ))}
         </dd>
