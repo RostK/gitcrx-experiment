@@ -1,3 +1,6 @@
+chrome.sidePanel
+  .setPanelBehavior({ openPanelOnActionClick: true })
+  .catch((error) => console.error(error));
 chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.create({
     id: "GET_GITHUB_INFO",

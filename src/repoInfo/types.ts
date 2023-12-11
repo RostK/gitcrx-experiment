@@ -10,3 +10,8 @@ export type RepoData = {
   updated_at: string;
   stargazers_count: number;
 };
+export type FavouriteRepoData = {
+  description: string;
+  full_name: string;
+  html_url: string;
+};
