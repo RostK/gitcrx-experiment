@@ -1,7 +1,7 @@
-import "./App.css";
-import { getRepoInfo, RepoData, RepoDisplay } from "./repoInfo";
+import { getRepoInfo, RepoData, RepoDisplay } from "../../repoInfo";
 import { useEffect, useState } from "react";
-import { Favourites } from "./Favourites.tsx";
+import { Favourites } from "../../Favourites.tsx";
+import { SIDEPANEL_PATH } from "../../consts.ts";
 
 function App() {
   const [repoData, setRepoData] = useState<RepoData | null>(null);
@@ -27,7 +27,7 @@ function App() {
       )}
       {repoData && (
         <>
-          <a href=".">Favourites</a>
+          <a href={`./${SIDEPANEL_PATH}`}>Favourites</a>
           <RepoDisplay repoData={repoData} />
         </>
       )}

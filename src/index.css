@@ -66,3 +66,24 @@ p {margin-top: 0}
     background-color: #f9f9f9;
   }
 }
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+dl {
+  margin: 0 0 0.5rem 0;
+}
+dl img {
+  vertical-align: middle;
+}
+dl > dt {
+  font-weight: bolder;
+  font-style: oblique;
+  display: inline-block;
+}
+dd {
+  display: inline-block;
+}

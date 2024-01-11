@@ -1,3 +1,5 @@
+import { SIDEPANEL_PATH } from "../consts.ts";
+
 chrome.sidePanel
   .setPanelBehavior({ openPanelOnActionClick: true })
   .catch((error) => console.error(error));
@@ -14,7 +16,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "GET_GITHUB_INFO" && tab && info.linkUrl) {
     void chrome.sidePanel.open({ windowId: tab.windowId });
     void chrome.sidePanel.setOptions({
-      path: `?url=${encodeURIComponent(info.linkUrl)}`,
+      path: `${SIDEPANEL_PATH}?url=${encodeURIComponent(info.linkUrl)}`,
     });
   }
 });
