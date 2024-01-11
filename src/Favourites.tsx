@@ -16,7 +16,7 @@ export const Favourites: FC = () => {
   return (
     <>
       {repos.map((repo) => (
-        <div>
+        <div key={repo.html_url}>
           <a href={`?url=${repo.html_url}`}>
             <strong>{repo.full_name}</strong>
           </a>
