@@ -1,5 +1,5 @@
 import { ManifestV3Export } from "@crxjs/vite-plugin";
-import { SIDEPANEL_PATH } from "./src/consts";
+import { POPUP_PATH, SIDEPANEL_PATH } from "./src/consts";
 
 export const manifest: ManifestV3Export = {
   manifest_version: 3,
@@ -14,6 +14,7 @@ export const manifest: ManifestV3Export = {
     default_path: SIDEPANEL_PATH,
   },
   action: {
-    default_title: "Click to open favourite repos",
+    default_title: "GitHub repos mentioned",
+    default_popup: POPUP_PATH,
   },
 };
