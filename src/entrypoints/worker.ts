@@ -17,3 +17,19 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     });
   }
 });
+
+function reddenPage() {
+  document.body.style.backgroundColor = "red";
+}
+
+chrome.action.onClicked.addListener((tab) => {
+  console.log(tab);
+  if (!tab.url?.includes("chrome://")) {
+    if (tab.id) {
+      void chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: reddenPage,
+      });
+    }
+  }
+});

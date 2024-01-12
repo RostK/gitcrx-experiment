@@ -5,7 +5,14 @@ export const manifest: ManifestV3Export = {
   manifest_version: 3,
   name: "GitHub repo info",
   version: "1.0.0",
-  permissions: ["contextMenus", "sidePanel", "tabs", "storage"],
+  permissions: [
+    "contextMenus",
+    "sidePanel",
+    "tabs",
+    "storage",
+    "activeTab",
+    "scripting",
+  ],
   background: {
     service_worker: "src/entrypoints/worker.ts",
     type: "module",
