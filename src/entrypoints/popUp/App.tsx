@@ -1,5 +1,5 @@
 import { SIDEPANEL_PATH } from "../../consts.ts";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 const handleClickFavourites = async () => {
   const currentWindow = await chrome.windows.getCurrent();
@@ -7,6 +7,19 @@ const handleClickFavourites = async () => {
     void chrome.sidePanel.open({ windowId: currentWindow.id });
     void chrome.sidePanel.setOptions({
       path: SIDEPANEL_PATH,
+    });
+  }
+};
+const handleClickRepoInfo: MouseEventHandler<HTMLAnchorElement> = async (e) => {
+  const url = e.currentTarget.href;
+  e.preventDefault();
+  e.stopPropagation();
+
+  const currentWindow = await chrome.windows.getCurrent();
+  if (currentWindow.id && url) {
+    void chrome.sidePanel.open({ windowId: currentWindow.id });
+    void chrome.sidePanel.setOptions({
+      path: `${SIDEPANEL_PATH}?url=${encodeURIComponent(url)}`,
     });
   }
 };
@@ -63,9 +76,15 @@ function App() {
       </a>
       <hr />
       <strong>GitHub repo mentions:</strong>
-      {urls.map((url) => (
-        <div key={url}>{url}</div>
-      ))}
+      <ul>
+        {urls.map((url) => (
+          <li>
+            <a href={url} key={url} onClick={handleClickRepoInfo}>
+              {url}
+            </a>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
